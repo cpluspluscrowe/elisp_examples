@@ -27,3 +27,22 @@
     ))
 
 
+(defun select-current-line ()
+  "selects the current line"
+  (interactive)
+  (end-of-line)
+  (set-mark (line-beginning-position)); The lesson is that a variable exists called line-beginning-position you can reference
+  )
+
+(defun highlight-it ()
+  "Highlight certain lines"
+  (interactive)
+      (progn
+        (highlight-lines-matching-regexp "highlight" 'hi-green)
+        (highlight-lines-matching-regexp "lesson" 'blue)
+        ))
+
+                                        ; now we add this function to a hook to check when a file is opened
+(add-hook 'find-file-hook 'highlight-it)
+
+
